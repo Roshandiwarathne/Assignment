@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Students_DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Batch">
+    <Key>
+      <PropertyRef Name="BatchID" />
+    </Key>
+    <Property Name="BatchID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BatchName" Type="nvarchar" MaxLength="1000" />
+  </EntityType>
+  <EntityType Name="Student">
+    <Key>
+      <PropertyRef Name="StdID" />
+    </Key>
+    <Property Name="StdID" Type="bigint" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="1000" />
+    <Property Name="Batch" Type="varchar" MaxLength="1000" />
+    <Property Name="Phone" Type="bigint" />
+    <Property Name="Address" Type="varchar" MaxLength="50" />
+    <Property Name="Age" Type="int" />
+  </EntityType>
+  <EntityType Name="StudentMaster">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="LoginName" Type="varchar" MaxLength="50" />
+    <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="50" />
+    <Property Name="ContactNo" Type="varchar" MaxLength="15" />
+    <Property Name="Address" Type="varchar" MaxLength="50" />
+    <Property Name="IsApporved" Type="int" />
+    <Property Name="Status" Type="int" />
+    <Property Name="TotalCnt" Type="int" />
+  </EntityType>
+  <Function Name="SP_Login" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserName" Type="varchar" Mode="In" />
+    <Parameter Name="Password" Type="varchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="Students_DBModelStoreContainer">
+    <EntitySet Name="Batch" EntityType="Self.Batch" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StudentMaster" EntityType="Self.StudentMaster" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>
